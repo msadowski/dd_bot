@@ -7,10 +7,10 @@
 	output="screen" ns="/dd_bot" args="joint_state_controller
     mobile_base_controller"/>
 
-<!-- convert joint states to TF transforms for rviz, etc -->
+<!-- convert joint states to TF transforms for rviz, etc
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
 	respawn="false" output="screen">
     <remap from="/joint_states" to="/dd_bot/joint_states" />
-  </node>
+  </node> -->
 
 </launch>
