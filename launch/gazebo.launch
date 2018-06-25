@@ -17,24 +17,25 @@
     <arg name="verbose" value="true"/>
   </include>
 
-  <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description"
-    command="$(find xacro)/xacro --inorder '$(find dd_bot)/urdf/dd_bot.urdf'" />
+    <!-- Load the URDF into the ROS Parameter Server -->
+    <param name="dd_bot/robot_description"
+      command="$(find xacro)/xacro --inorder '$(find dd_bot)/urdf/dd_bot.urdf'" />
 
-  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-    args="-urdf -model dd_bot -param robot_description -R 3.14"/>
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" ns="dd_bot" type="spawn_model" respawn="false" output="screen"
+      args="-urdf -model dd_bot -param robot_description -R 3.14"/>
 
-<!-- convert joint states to TF transforms for rviz, etc -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-	respawn="false" output="screen">
-    <!-- <remap from="/joint_states" to="/dd_bot/joint_states" /> -->
-  </node>
+  <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" ns="dd_bot" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+      <!-- <remap from="/joint_states" to="/dd_bot/joint_states" /> -->
+    </node>
 
   <!-- Run joint state publisher (Gets robot_description from parameter server)-->
 <node pkg="joint_state_publisher"
     type="joint_state_publisher"
-    name="joint_state_publisher" >
+    name="joint_state_publisher" 
+    ns="dd_bot">
     <param name="rate" value="50" />
 </node>
 
