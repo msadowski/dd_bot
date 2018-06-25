@@ -137,11 +137,9 @@
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="right_wheel_joint">
         <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
       </joint>
       <actuator name="right_motor">
-        <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
   </transmission>
@@ -150,11 +148,10 @@
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="left_wheel_joint">
         <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
       </joint>
       <actuator name="left_motor">
         <!--hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface-->
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
   </transmission>
@@ -162,7 +159,7 @@
   <gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
           <!-- <robotParam>/robot_state_publisher/robot_description</robotParam> -->
-          <robotNamespace>/dd_bot</robotNamespace>
+          <!-- <robotNamespace>/dd_bot</robotNamespace> -->
         <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       </plugin>
   </gazebo>
